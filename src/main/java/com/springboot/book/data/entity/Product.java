@@ -7,12 +7,13 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Builder
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = "name")
 @EqualsAndHashCode(callSuper = false)
+@ToString(exclude = "name")
 @Table(name="product")
 public class Product {
 

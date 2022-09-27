@@ -1,12 +1,19 @@
 package com.springboot.book.data.dto;
 
+import lombok.*;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+@Builder
 public class ProductDto {
 
     private String name;
     private int price;
     private int stock;
 
-    public ProductDto(String name, int price, int stock) {
+    /*public ProductDto(String name, int price, int stock) {
         this.setName(name);
         this.setPrice(price);
         this.setStock(stock);
@@ -35,4 +42,5 @@ public class ProductDto {
     public void setStock(int stock) {
         this.stock = stock;
     }
+    */
 }
