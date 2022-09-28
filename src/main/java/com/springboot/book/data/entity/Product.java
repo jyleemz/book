@@ -14,8 +14,11 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @ToString(exclude = "name")
+//@EqualsAndHashCode(callSuper = true)  // 예제 8.43
+//@ToString(callSuper = true)  // 예제 8.43
 @Table(name="product")
 public class Product {
+//public class Product extends  BaseEntity {  // 예제 8.43
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,9 +33,9 @@ public class Product {
     @Column(nullable = false)
     private Integer stock;
 
-    private LocalDateTime createdAt;
+    /*private LocalDateTime createdAt;
 
-    private LocalDateTime updatedAt;
+    private LocalDateTime updatedAt;*/  // 예제 8.43 에서 삭제
 
     /*public String getName() {
         return name;
