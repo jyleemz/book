@@ -12,13 +12,13 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = false)
-@ToString(exclude = "name")
-//@EqualsAndHashCode(callSuper = true)  // 예제 8.43
-//@ToString(callSuper = true)  // 예제 8.43
+//@EqualsAndHashCode(callSuper = false)
+//@ToString(exclude = "name")
+@ToString(callSuper = true)  // 예제 8.43
+@EqualsAndHashCode(callSuper = true)  // 예제 8.43
 @Table(name="product")
-public class Product {
-//public class Product extends  BaseEntity {  // 예제 8.43
+//public class Product {
+public class Product extends  BaseEntity {  // 예제 8.43
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,6 +32,10 @@ public class Product {
 
     @Column(nullable = false)
     private Integer stock;
+
+    @OneToOne(mappedBy = "product")
+    @ToString.Exclude
+    private ProductDetail productDetail;
 
     /*private LocalDateTime createdAt;
 

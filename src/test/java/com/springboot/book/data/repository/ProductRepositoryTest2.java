@@ -1,19 +1,20 @@
 package com.springboot.book.data.repository;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
 import com.springboot.book.data.entity.Product;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-
+// 예제 7.18
 @SpringBootTest
 public class ProductRepositoryTest2 {
 
     @Autowired
-    private ProductRepository productRepository;
+    ProductRepository productRepository;
 
     @Test
     public void basicCRUDTest() {
@@ -29,10 +30,14 @@ public class ProductRepositoryTest2 {
         Product savedProduct = productRepository.save(givenProduct);
 
         // then
-        Assertions.assertThat(savedProduct.getNumber()).isEqualTo(givenProduct.getNumber());
-        Assertions.assertThat(savedProduct.getName()).isEqualTo(givenProduct.getName());
-        Assertions.assertThat(savedProduct.getPrice()).isEqualTo(givenProduct.getPrice());
-        Assertions.assertThat(savedProduct.getStock()).isEqualTo(givenProduct.getStock());
+        Assertions.assertThat(savedProduct.getNumber())
+                .isEqualTo(givenProduct.getNumber());
+        Assertions.assertThat(savedProduct.getName())
+                .isEqualTo(givenProduct.getName());
+        Assertions.assertThat(savedProduct.getPrice())
+                .isEqualTo(givenProduct.getPrice());
+        Assertions.assertThat(savedProduct.getStock())
+                .isEqualTo(givenProduct.getStock());
 
         /* read */
         // when
@@ -40,12 +45,16 @@ public class ProductRepositoryTest2 {
                 .orElseThrow(RuntimeException::new);
 
         // then
-        Assertions.assertThat(selectedProduct.getNumber()).isEqualTo(givenProduct.getNumber());
-        Assertions.assertThat(selectedProduct.getName()).isEqualTo(givenProduct.getName());
-        Assertions.assertThat(selectedProduct.getPrice()).isEqualTo(givenProduct.getPrice());
-        Assertions.assertThat(selectedProduct.getStock()).isEqualTo(givenProduct.getStock());
+        Assertions.assertThat(selectedProduct.getNumber())
+                .isEqualTo(givenProduct.getNumber());
+        Assertions.assertThat(selectedProduct.getName())
+                .isEqualTo(givenProduct.getName());
+        Assertions.assertThat(selectedProduct.getPrice())
+                .isEqualTo(givenProduct.getPrice());
+        Assertions.assertThat(selectedProduct.getStock())
+                .isEqualTo(givenProduct.getStock());
 
-        /* updata */
+        /* update */
         // when
         Product foundProduct = productRepository.findById(selectedProduct.getNumber())
                 .orElseThrow(RuntimeException::new);
@@ -64,5 +73,4 @@ public class ProductRepositoryTest2 {
         // then
         assertFalse(productRepository.findById(selectedProduct.getNumber()).isPresent());
     }
-
 }
